@@ -1,0 +1,10 @@
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\Task01.exe.config
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\Task01.exe
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\Task01.pdb
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\StyleCop.CSharp.dll
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\StyleCop.dll
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\Microsoft.Build.Utilities.v3.5.dll
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\ru\Microsoft.Build.Utilities.v3.5.resources.dll
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.csprojResolveAssemblyReference.cache
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.exe
+c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.pdb
