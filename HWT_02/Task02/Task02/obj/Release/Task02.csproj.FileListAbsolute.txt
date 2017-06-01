@@ -1,0 +1,12 @@
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\bin\Release\Task02.exe.config
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\bin\Release\Task02.exe
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\bin\Release\Task02.pdb
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\obj\Release\Task02.csprojResolveAssemblyReference.cache
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\obj\Release\Task02.exe
+c:\users\1nf\documents\visual studio 2015\Projects\HWT_02_new\Task02\Task02\obj\Release\Task02.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\bin\Release\Task02.exe.config
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\obj\Release\Task02.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\obj\Release\Task02.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\bin\Release\Task02.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\bin\Release\Task02.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task02\Task02\obj\Release\Task02.csprojResolveAssemblyReference.cache

@@ -1,1 +1,3 @@
 c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Debug\Task01.exe.config
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Debug\Task01.exe.config
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Debug\Task01.exe.config

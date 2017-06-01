@@ -8,3 +8,26 @@ c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\bin\Release\ru\
 c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.csprojResolveAssemblyReference.cache
 c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.exe
 c:\users\1nf\documents\visual studio 2015\Projects\Task01\Task01\obj\Release\Task01.pdb
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task01\Task01\bin\Release\Task01.exe.config
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task01\Task01\obj\Release\Task01.exe
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task01\Task01\obj\Release\Task01.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\Task01.exe.config
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\obj\Release\Task01.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\obj\Release\Task01.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\Task01.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\Task01.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\StyleCop.CSharp.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\StyleCop.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\Microsoft.Build.Utilities.v3.5.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\bin\Release\ru\Microsoft.Build.Utilities.v3.5.resources.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task01\Task01\obj\Release\Task01.csprojResolveAssemblyReference.cache
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\Task01.exe.config
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\obj\Release\Task01.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\obj\Release\Task01.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\Task01.exe
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\Task01.pdb
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\StyleCop.CSharp.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\StyleCop.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\Microsoft.Build.Utilities.v3.5.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\bin\Release\ru\Microsoft.Build.Utilities.v3.5.resources.dll
+C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task01\Task01\obj\Release\Task01.csprojResolveAssemblyReference.cache

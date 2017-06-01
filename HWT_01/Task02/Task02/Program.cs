@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Task02
 {
@@ -10,6 +11,9 @@ namespace Task02
     {
         static void Main(string[] args)
         {
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
+
             double a;
             double b;
             double c;
@@ -45,19 +49,14 @@ namespace Task02
             {
                 x1 = (-b + Math.Sqrt(D)) / (2 * a);
                 x2 = (-b - Math.Sqrt(D)) / (2 * a);
-                if (x1 == x2)
-                {
-                    Console.WriteLine("Корень уравнения:\nx1 = {0}", x1);
-                }
-                else
-                {
-                    Console.WriteLine("Корни уравнения:\nx1 = {0}\nx2 = {1}", x1, x2);
-                }
+
+                Console.WriteLine(x1 == x2 ? "Корень уравнения:\nx1 = {0}" : "Корни уравнения:\nx1 = {0}\nx2 = {1}", x1, x2);
             }
             else
             {
                 Console.WriteLine("Корней нет");
             }
+
             Console.ReadKey();
         }
     }
