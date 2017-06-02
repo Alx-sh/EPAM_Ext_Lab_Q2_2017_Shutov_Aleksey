@@ -10,3 +10,9 @@ C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task06\Task06\obj\Rele
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task06\Task06\bin\Release\Task06.exe
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task06\Task06\bin\Release\Task06.pdb
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_02\Task06\Task06\obj\Release\Task06.csprojResolveAssemblyReference.cache
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\bin\Release\Task06.exe.config
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\obj\Release\Task06.exe
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\obj\Release\Task06.pdb
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\bin\Release\Task06.exe
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\bin\Release\Task06.pdb
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_02\Task06\Task06\obj\Release\Task06.csprojResolveAssemblyReference.cache

@@ -169,7 +169,7 @@ namespace Task01
                         }
                 }
 
-                Console.WriteLine(belong == true ? "Точка ({0};{1}) принадлежит фигуре [{2}]." : (belong == false ? "Точка ({0};{1}) не принадлежит фигуре [{2}]." : string.Empty), x, y, letter); // Исправил
+                Console.WriteLine("Точка ({0};{1}) {2}принадлежит фигуре [{3}].", x, y, belong == true ? "" : "не ", letter); // Исправил
                 Console.ReadKey();
             }
         }

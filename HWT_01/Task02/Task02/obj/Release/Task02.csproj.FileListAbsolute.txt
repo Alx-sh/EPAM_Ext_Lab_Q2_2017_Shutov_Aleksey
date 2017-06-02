@@ -13,3 +13,6 @@ C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01_zadania\Task02\Task02\
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task02\Task02\bin\Release\Task02.exe.config
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task02\Task02\obj\Release\Task02.exe
 C:\Users\1nf\Documents\Visual Studio 2015\Projects\HWT_01\Task02\Task02\obj\Release\Task02.pdb
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task02\Task02\bin\Release\Task02.exe.config
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task02\Task02\obj\Release\Task02.exe
+C:\Users\1nf\Documents\GitHub\EPAM_Ext_Lab_Q2_2017_Shutov_Aleksey\HWT_01\Task02\Task02\obj\Release\Task02.pdb

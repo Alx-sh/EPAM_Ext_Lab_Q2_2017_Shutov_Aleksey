@@ -9,6 +9,28 @@ namespace Task06
 
     class Program
     {
+        /// <summary>
+        /// Добавление и удаление подстрок в строку str.
+        /// </summary>
+        /// <param name="numStr"> Добавляемая строка по номеру в списке меню. </param>
+        /// <param name="str"> Ссылка на строка параметров надписи. </param>
+        /// <returns> Измененная строка. </returns>
+        static string NewString(string numStr, ref string str)
+        {
+            int index = str.IndexOf(numStr);
+
+            if (index == -1)
+            {
+                str = str == "None" ? numStr : str + ", " + numStr;
+            }
+            else
+            {
+                str = index == 0 ? str.Remove(index, numStr.Length) : str.Remove(index - 2, numStr.Length + 2);
+            }
+
+            return str;
+        }
+
         static void Main(string[] args)
         {
             Console.InputEncoding = Encoding.Unicode;
@@ -19,16 +41,15 @@ namespace Task06
             string bold = "Bold";
             string italic = "Italic";
             string underline = "Undeline";
-            int index;
 
             while (true)
             {
-                if (str.Length == 0)
+                if (str == string.Empty)
                 {
                     str = "None";
                 }
 
-                if (str[0] == ',')
+                if (str.StartsWith(","))
                 {
                     str = str.Remove(0, 2);
                 }
@@ -47,88 +68,19 @@ namespace Task06
 
                     case "1":
                         {
-                            index = str.IndexOf(bold);
-                            if (index == -1)
-                            {
-                                if (str == "None")
-                                {
-                                    str = bold;
-                                }
-                                else
-                                {
-                                    str += ", " + bold;
-                                }
-                            }
-                            else
-                            {
-                                if (index == 0)
-                                {
-                                    str = str.Remove(index, bold.Length);
-                                }
-                                else
-                                {
-                                    str = str.Remove(index - 2, bold.Length + 2);
-                                }
-                            }
-
+                            str = NewString(bold, ref str);
                             break;
                         }
 
                     case "2":
                         {
-                            index = str.IndexOf(italic);
-                            if (index == -1)
-                            {
-                                if (str == "None")
-                                {
-                                    str = italic;
-                                }
-                                else
-                                {
-                                    str += ", " + italic;
-                                }
-                            }
-                            else
-                            {
-                                if (index == 0)
-                                {
-                                    str = str.Remove(index, italic.Length);
-                                }
-                                else
-                                {
-                                    str = str.Remove(index - 2, italic.Length + 2);
-                                }
-                            }
-
+                            str = NewString(italic, ref str);
                             break;
                         }
 
                     case "3":
                         {
-                            index = str.IndexOf(underline);
-                            if (index == -1)
-                            {
-                                if (str == "None")
-                                {
-                                    str = underline;
-                                }
-                                else
-                                {
-                                    str += ", " + underline;
-                                }
-                            }
-                            else
-                            {
-                                if (index == 0)
-                                {
-                                    str = str.Remove(index, underline.Length);
-                                }
-                                else
-                                {
-                                    str = str.Remove(index - 2, underline.Length + 2);
-                                }
-                            }
-
+                            str = NewString(underline, ref str);
                             break;
                         }
 
