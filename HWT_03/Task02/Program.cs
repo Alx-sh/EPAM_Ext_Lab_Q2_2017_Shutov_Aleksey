@@ -73,7 +73,8 @@ namespace Task02
             Console.WriteLine("Исходный трехмерный массив:");
             ShowArray(arr);
 
-            Console.ReadKey();//todo pn нужно было сообщение хотя бы вывести, чтобы пользователь что-нибудь нажал, а то не очень понятно, что делать.
+            Console.WriteLine("Нажмите любую клавишу для продолжения.");
+            Console.ReadKey();
 
             ChangeElements(ref arr);
             Console.WriteLine("Массив, после замены положительных элементов нулями:");

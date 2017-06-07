@@ -22,13 +22,9 @@ namespace Task02
                 Console.WriteLine("Введите число N:");
                 isInt = int.TryParse(Console.ReadLine(), out N);
 
-                if (isInt == true && N > 0)//todo pn аналогично
+                if (isInt && N > 0)
 				{
                     break;
-                }
-				else//todo pn аналогично
-				{
-                    Console.WriteLine("Некорректное значение! Введите положительное целое число.");
                 }
             }
 

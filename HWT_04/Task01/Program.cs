@@ -22,10 +22,7 @@ namespace Task01
 
             foreach (char ch in str)
             {
-                if (!char.IsPunctuation(ch))
-                {
-                    sb.Append(ch);
-                }
+                sb.Append(char.IsPunctuation(ch) ? ' ' : ch);
             }
 
             str = sb.ToString();
@@ -60,14 +57,14 @@ namespace Task01
             str = Console.ReadLine();
 
             ClearString(ref str);
-
+            Console.WriteLine(str);
             foreach (char ch in str)
             {
                 sum += (char.IsLetterOrDigit(ch) && !char.IsPunctuation(ch)) ? 1 : 0;
                 countWord += (char.IsSeparator(ch) ? 1 : 0);
             }
 
-            Console.WriteLine("Сумма всех букв в строке = {0}\nКоличество слов = {1}", sum, countWord);//todo pn вот не написал бы про "количество слов", я бы и не обратил внимания) смотри скрин в корне проекта. Там 6 слов, но ты пишешь 5.
+            Console.WriteLine("Сумма всех букв в строке = {0}\nКоличество слов = {1}", sum, countWord);//Исправил
 
             average = sum / countWord;
 

@@ -15,7 +15,7 @@ namespace Task06
         /// <param name="numStr"> Добавляемая строка по номеру в списке меню. </param>
         /// <param name="str"> Ссылка на строка параметров надписи. </param>
         /// <returns> Измененная строка. </returns>
-        static string NewString(string numStr, ref string str)
+        static string NewString(string numStr, string str)
         {
             int index = str.IndexOf(numStr);
 
@@ -68,19 +68,19 @@ namespace Task06
 
                     case "1":
                         {
-                            str = NewString(bold, ref str);//todo pn зачем тебе здесь ref если и без него будет всё работать?
+                            str = NewString(bold, str);//Убрал
                             break;
                         }
 
                     case "2":
                         {
-                            str = NewString(italic, ref str);
+                            str = NewString(italic, str);
                             break;
                         }
 
                     case "3":
                         {
-                            str = NewString(underline, ref str);
+                            str = NewString(underline, str);
                             break;
                         }
 
