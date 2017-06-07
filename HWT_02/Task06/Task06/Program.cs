@@ -68,7 +68,7 @@ namespace Task06
 
                     case "1":
                         {
-                            str = NewString(bold, ref str);
+                            str = NewString(bold, ref str);//todo pn зачем тебе здесь ref если и без него будет всё работать?
                             break;
                         }
 

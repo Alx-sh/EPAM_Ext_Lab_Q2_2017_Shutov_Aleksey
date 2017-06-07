@@ -23,11 +23,11 @@ namespace Task03
                 Console.WriteLine("Введите число N:");
                 isInt = int.TryParse(Console.ReadLine(), out N);
 
-                if (isInt == true && N > 0)
-                {
+                if (isInt == true && N > 0)//todo pn у тебя isInt - булевая переменная, её можно и без сравнения с true в условиях использовать
+				{
                     break;
                 }
-                else
+                else//todo pn лишний
                 {
                     Console.WriteLine("Некорректное значение! Введите положительное целое число.");
                 }
