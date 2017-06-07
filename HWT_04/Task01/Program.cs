@@ -67,7 +67,7 @@ namespace Task01
                 countWord += (char.IsSeparator(ch) ? 1 : 0);
             }
 
-            Console.WriteLine("Сумма всех букв в строке = {0}\nКоличество слов = {1}", sum, countWord);
+            Console.WriteLine("Сумма всех букв в строке = {0}\nКоличество слов = {1}", sum, countWord);//todo pn вот не написал бы про "количество слов", я бы и не обратил внимания) смотри скрин в корне проекта. Там 6 слов, но ты пишешь 5.
 
             average = sum / countWord;
 
