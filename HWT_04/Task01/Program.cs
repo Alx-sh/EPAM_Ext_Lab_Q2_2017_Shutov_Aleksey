@@ -57,7 +57,7 @@ namespace Task01
             str = Console.ReadLine();
 
             ClearString(ref str);
-            Console.WriteLine(str);
+
             foreach (char ch in str)
             {
                 sum += (char.IsLetterOrDigit(ch) && !char.IsPunctuation(ch)) ? 1 : 0;
