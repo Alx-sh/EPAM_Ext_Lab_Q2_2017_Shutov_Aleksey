@@ -57,8 +57,8 @@
         /// <returns>Содержит ли строка заданный символ.</returns>
         public bool Contains(char ch)
         {
-            return IndexOf(ch) != -1 ? true : false;
-        }
+            return IndexOf(ch) != -1 ? true : false;//todo pn для чего тебе "?!"? можно просто вернуть IndexOf(ch) != -1
+		}
 
         /// <summary>
         /// Определяет, совпадает ли начало данного экземпляра строки с указанным символом.
@@ -67,8 +67,8 @@
         /// <returns>Совпадает ли начало строки с заданным символом.</returns>
         public bool StartWith(char ch)
         {
-            return str[0] == ch ? true : false;
-        }
+            return str[0] == ch ? true : false;//todo pn для чего тебе "?!"?
+		}
 
         /// <summary>
         /// Определяет, совпадает ли конец данного экземпляра строки с указанным символом.
@@ -77,8 +77,8 @@
         /// <returns>Совпадает ли конец строки с заданным символом.</returns>
         public bool EndWith(char ch)
         {
-            return str[str.Length - 1] == ch ? true : false;
-        }
+            return str[str.Length - 1] == ch ? true : false;//todo pn для чего тебе "?!"?
+		}
 
         /// <summary>
         /// Возвращает копию этой строки, переведенный в нижний регистр.

@@ -11,10 +11,10 @@ namespace Task01
     /// <summary>
     /// Класс, задающий круг с указанными координатами центра, радиусом, а также свойствами, позволяющими узнать длину описанной окружности и площадь круга.
     /// </summary>
-    public class Round
+    public class Round//todo pn принято каждый класс в отдельный файл выносить (за исключением агрегированных)
     {
-        public int X { get; set; }
-        public int Y { get; private set; }
+        public int X { get; set; }//todo pn а чоита у Х публичный сеттер, а у Y нет?
+		public int Y { get; private set; }
         private double r = 1;
 
         public double Radius
@@ -56,8 +56,8 @@ namespace Task01
         /// <returns>Вещественное число.</returns>
         public double GetLength()
         {
-            return 2 * Math.PI * r;
-        }
+            return 2 * Math.PI * r;//todo pn принято использовать не приватные поля, а те, в которых мы производим проверку на корректность значения
+		}
 
         /// <summary>
         /// Площадь круга.

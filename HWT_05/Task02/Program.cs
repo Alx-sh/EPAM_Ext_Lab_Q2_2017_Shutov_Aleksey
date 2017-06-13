@@ -9,8 +9,8 @@ namespace Task02
 
     class Triangle
     {
-        private double a = 1;
-        private double b = 1;
+        private double a = 1;//todo pn значения по умолчанию лучше задавать константами
+		private double b = 1;
         private double c = 1;
 
         public double A
@@ -111,8 +111,8 @@ namespace Task02
         /// Периметр треугольника.
         /// </summary>
         /// <returns>Вещественное число.</returns>
-        public double GetPerimeter()
-        {
+        public double GetPerimeter()//todo pn сделай лучше свойством с геттером
+		{
             return a + b + c;
         }
 
