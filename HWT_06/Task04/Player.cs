@@ -7,9 +7,9 @@
         private Professions Prof { get; set; }
         private Stats Stats { get; set; }
         public int Gold { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; }//todo pn просится сделать enum 
 
-        public Player(int i, string n, Professions p, int x, int y)
+		public Player(int i, string n, Professions p, int x, int y)
         {
             Id = i;
             Name = n;
