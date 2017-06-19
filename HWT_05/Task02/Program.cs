@@ -7,126 +7,6 @@ namespace Task02
     using System;
     using System.Text;
 
-    class Triangle
-    {
-        private double a = 1;//todo pn значения по умолчанию лучше задавать константами
-		private double b = 1;
-        private double c = 1;
-
-        public double A
-        {
-            get
-            {
-                return a;
-            }
-
-            set
-            {
-                if (value > 0)
-                {
-                    a = value;
-                }
-                else
-                {
-                    Console.WriteLine("Недопустимое значение: {0}. Использовано значение по умолчанию: {1}.", value, a);
-                }
-
-                Console.WriteLine("Значение для стороны a =  {0}", a);
-            }
-        }
-
-        public double B
-        {
-            get
-            {
-                return b;
-            }
-
-            set
-            {
-                if (value > 0)
-                {
-                    b = value;
-                }
-                else
-                {
-                    Console.WriteLine("Недопустимое значение: {0}. Использовано значение по умолчанию: {1}.", value, b);
-                }
-
-                Console.WriteLine("Значение для стороны b =  {0}", b);
-            }
-        }
-
-        public double C
-        {
-            get
-            {
-                return c;
-            }
-
-            set
-            {
-                if (value > 0)
-                {
-                    c = value;
-                }
-                else
-                {
-                    Console.WriteLine("Недопустимое значение: {0}. Использовано значение по умолчанию: {1}.", value, c);
-                }
-
-                Console.WriteLine("Значение для стороны c =  {0}", c);
-            }
-        }
-
-        public Triangle()
-        {
-            Console.WriteLine("Создан конструктор без параметров:\n a = {0}\n b = {1}\n c = {2}", a, b, c);
-        }
-
-        public Triangle(double a, double b, double c)
-        {
-            Console.WriteLine("Создан конструктор с параметрами:\n a = {0}\n b = {1}\n c = {2}", a, b, c);
-            A = a;
-            B = b;
-            C = c;
-        }
-
-        /// <summary>
-        /// Проверка, является ли фигура треугольником.
-        /// </summary>
-        /// <returns>Булево значение.</returns>
-        public bool IsTriangle()
-        {
-            if (a + b <= c || a + c <= b || b + c <= a || a == 0 || b == 0 || c == 0)
-            {
-                Console.WriteLine("\nТреугольника с такими сторонами не существует!");
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Периметр треугольника.
-        /// </summary>
-        /// <returns>Вещественное число.</returns>
-        public double GetPerimeter()//todo pn сделай лучше свойством с геттером
-		{
-            return a + b + c;
-        }
-
-        /// <summary>
-        /// Площадь треугольника.
-        /// </summary>
-        /// <returns>Вещественное число.</returns>
-        public double GetArea()
-        {
-            double p = GetPerimeter() / 2;
-            return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -147,7 +27,7 @@ namespace Task02
 
             if (tr1.IsTriangle())
             {
-                perimeter = tr1.GetPerimeter();
+                perimeter = tr1.Perimeter;
                 area = tr1.GetArea();
                 Console.WriteLine("\nПериметр треугольника: {0}\nПлощадь треугольника: {1}", perimeter, area);
             }
@@ -160,7 +40,7 @@ namespace Task02
             tr2 = new Triangle(1.4, 6.5, -1);
             if (tr2.IsTriangle())
             {
-                perimeter = tr2.GetPerimeter();
+                perimeter = tr2.Perimeter;
                 area = tr2.GetArea();
                 Console.WriteLine("\nПериметр треугольника: {0}\nПлощадь треугольника: {1}", perimeter, area);
             }
