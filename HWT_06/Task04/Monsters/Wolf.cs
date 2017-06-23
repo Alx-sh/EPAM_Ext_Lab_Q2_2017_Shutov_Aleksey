@@ -5,9 +5,8 @@
         public Wolf(int x, int y) : base(x, y)
         {
             id = 2;
-            name = "Волк";
+            name = Monster.Wolf;
             stats = new Stats();
-            status = "Здоров";
             isMoving = true;
         }
 

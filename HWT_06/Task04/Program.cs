@@ -30,7 +30,7 @@ namespace Task04
             {
                 field.GameMove();
 
-                if(player1.Status == "Убит")
+                if(player1.Stats.Stat == Stats.Status.Dead)
                 {
                     Console.WriteLine("Поражение! Игрок убит.");
                     break;

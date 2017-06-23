@@ -19,7 +19,6 @@
             Name = string.Empty;
             Patronymic = string.Empty;
             BirthDate = DateTime.Now;
-            age = Age;//todo pn бессмысленно, когда захочешь получить возраст все равно заново пересчитает
         }
 
         public User(string f, string n, string o, DateTime bd)
@@ -28,7 +27,6 @@
             Name = n;
             Patronymic = o;
             BirthDate = bd;
-            age = Age;
         }
 
         public int Age

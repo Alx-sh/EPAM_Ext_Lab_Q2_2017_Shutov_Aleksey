@@ -3,9 +3,8 @@
     abstract class Monsters : Field
     {
         public int id { get; set; }
-        protected string name { get; set; }
+        protected Monster name { get; set; }
         protected Stats stats { get; set; }
-        public string status { get; set; }
         public bool isMoving { get; set; }
         
         public Monsters(int x, int y)
@@ -40,5 +39,12 @@
         /// Способность монстра.
         /// </summary>
         public abstract void Skill();
+
+        public enum Monster
+        {
+            Bear,
+            Dog,
+            Wolf
+        }
     }
 }

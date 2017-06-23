@@ -5,9 +5,8 @@
         public Dog(int x, int y) : base(x, y)
         {
             id = 3;
-            name = "Собака";
+            name = Monster.Dog;
             stats = new Stats();
-            status = "Здорова";
             isMoving = true;
         }
 

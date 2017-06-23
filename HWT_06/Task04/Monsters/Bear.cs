@@ -5,9 +5,8 @@
         public Bear(int x, int y) : base(x, y)
         {
             id = 1;
-            name = "Медведь";//todo pn просится сделать константой типа или enum
+            name = Monster.Bear;
 			stats = new Stats();
-            status = "Здоров";//todo pn просится сделать enum 
             isMoving = true;
         }
 

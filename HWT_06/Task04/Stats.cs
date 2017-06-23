@@ -14,6 +14,7 @@
         public double RegenerationHP { get; set; }
         public double RegenerationMP { get; set; }
         public int Damage { get; set; }
+        public Status Stat { get; set; }
 
         public Stats()
         {
@@ -30,7 +31,7 @@
             CalculateArmor(Agility);
         }
 
-        public Stats(int exp, int hp, int mp, int ms, int s, int a, int i, int dmg)
+        public Stats(int exp, int hp, int mp, int ms, int s, int a, int i, int dmg, Status st)
         {
             Experience = exp;
             HealthPoint = hp;
@@ -40,6 +41,7 @@
             Agility = a;
             Intelligence = i;
             Damage = dmg;
+            Stat = st;
             CalculateRegen(Strength, Intelligence);
             CalculateLevel(Experience);
             CalculateArmor(Agility);
@@ -50,5 +52,12 @@
         public void CalculateLevel(int experience) { }
 
         public void CalculateArmor(int agility) { }
+
+        public enum Status
+        {
+            Healthy,
+            Wounded,
+            Dead
+        }
     }
 }
