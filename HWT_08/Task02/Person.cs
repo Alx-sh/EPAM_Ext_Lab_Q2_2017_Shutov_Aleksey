@@ -16,7 +16,7 @@
 
         public void Goodbye(object sender, OfficeEventArgs e)
         {
-            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.name, Name);
-		}
+            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.name, Name);//То есть нужно возвращать строку в Office и выводить её там?
+        }
     }
 }
