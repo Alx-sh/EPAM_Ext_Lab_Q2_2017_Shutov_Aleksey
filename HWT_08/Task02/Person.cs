@@ -16,7 +16,7 @@
 
         public void Goodbye(object sender, OfficeEventArgs e)
         {
-            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.person.Name, Name);
-        }
+            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.person.Name, Name);//todo pn в отдельном классе не должно быть зависимостей от других классов (в твоём случае от класса вывода данных)
+		}
     }
 }

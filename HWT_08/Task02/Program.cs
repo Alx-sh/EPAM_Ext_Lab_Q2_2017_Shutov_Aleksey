@@ -21,7 +21,7 @@ namespace Task02
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
-            Office epam = new Office();
+            Office epam = new Office();//todo pn прогиб засчитан)
 
             Person john = new Person { Name = "Джон" };
             Person bill = new Person { Name = "Билл" };
