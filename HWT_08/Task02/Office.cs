@@ -20,7 +20,7 @@
         public void Add(Person p, DateTime dt)
         {
             Console.WriteLine("\n[На работу пришел {0}]", p.Name);
-            OnCame?.Invoke(this, new OfficeEventArgs(p, dt));
+            OnCame?.Invoke(this, new OfficeEventArgs(p.Name, dt));
             OnCame += p.Greet;
             OnLeave += p.Goodbye;
             office.Add(p);
@@ -31,7 +31,7 @@
             Console.WriteLine("\n[{0} ушел домой]", p.Name);
             office.Remove(p);
             OnLeave -= p.Goodbye;
-            OnLeave?.Invoke(this, new OfficeEventArgs(p));
+            OnLeave?.Invoke(this, new OfficeEventArgs(p.Name));
             OnCame -= p.Greet;
         }
     }

@@ -10,13 +10,13 @@
         {
             Console.WriteLine("'{0}, {1}!', - сказал {2}.",
                 e.dTime.Hour >= 12 && e.dTime.Hour < 17 ? "Добрый день" : (e.dTime.Hour < 12 ? "Доброе утро" : "Добрый вечер"), 
-                e.person.Name, 
+                e.name, 
                 Name);
         }
 
         public void Goodbye(object sender, OfficeEventArgs e)
         {
-            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.person.Name, Name);//todo pn в отдельном классе не должно быть зависимостей от других классов (в твоём случае от класса вывода данных)
+            Console.WriteLine("'До свидания, {0}!', - сказал {1}.", e.name, Name);
 		}
     }
 }
