@@ -4,17 +4,17 @@
 
     class OfficeEventArgs
     {
-        public string name { get; set; }
+        public Person person { get; set; }
         public DateTime dTime { get; set; }
 
-        public OfficeEventArgs(string n)
+        public OfficeEventArgs(Person p)
         {
-            name = n;
+            person = p;
         }
 
-        public OfficeEventArgs(string n, DateTime dt)
+        public OfficeEventArgs(Person p, DateTime dt)
         {
-            name = n;
+            person = p;
             dTime = dt;
         }
     }

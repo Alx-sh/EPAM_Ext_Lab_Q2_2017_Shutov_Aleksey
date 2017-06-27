@@ -2,8 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
 
-    class Office
+    class Office : Write
     {
         List<Person> office = new List<Person>();
 
@@ -19,8 +20,12 @@
 
         public void Add(Person p, DateTime dt)
         {
-            Console.WriteLine("\n[На работу пришел {0}]", p.Name);
-            OnCame?.Invoke(this, new OfficeEventArgs(p.Name, dt));
+            IConsole link = p;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("\n[На работу пришел {0}]", p.Name);
+            link.WriteLine(sb);
+
+            OnCame?.Invoke(this, new OfficeEventArgs(p, dt));
             OnCame += p.Greet;
             OnLeave += p.Goodbye;
             office.Add(p);
@@ -28,10 +33,14 @@
 
         public void Remove(Person p)
         {
-            Console.WriteLine("\n[{0} ушел домой]", p.Name);
+            IConsole link = p;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("\n[{0} ушел домой]", p.Name);
+            link.WriteLine(sb);
+
             office.Remove(p);
             OnLeave -= p.Goodbye;
-            OnLeave?.Invoke(this, new OfficeEventArgs(p.Name));
+            OnLeave?.Invoke(this, new OfficeEventArgs(p));
             OnCame -= p.Greet;
         }
     }
