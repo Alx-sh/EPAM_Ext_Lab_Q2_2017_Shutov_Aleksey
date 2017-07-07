@@ -13,7 +13,7 @@ namespace Task02
         {
             foreach (var item in str)
             {
-                if (!condition(item))
+                if (!condition(item))//todo pn некорректное поведение при 0
                 {
                     return false;
                 }
