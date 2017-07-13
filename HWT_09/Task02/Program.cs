@@ -13,7 +13,7 @@ namespace Task02
         {
             foreach (var item in str)
             {
-                if (!condition(item))//todo pn некорректное поведение при 0
+                if (!condition(item) || str.Equals("0"))
                 {
                     return false;
                 }
