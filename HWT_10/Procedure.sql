@@ -39,11 +39,11 @@ IF OBJECT_ID('SubordinationInfo') IS NOT NULL
 	DROP PROCEDURE SubordinationInfo
 GO
 CREATE PROCEDURE SubordinationInfo
-	@EmployerID INT
+	@EmployerID INT,
+	@Sym NVARCHAR(30) = ''
 AS
-	DECLARE @Sym NVARCHAR(30) = ''
 	DECLARE @Name NVARCHAR(30)
-WHILE (@EmployerID IS NOT NULL)
+	DECLARE @EmpID INT = 0
 BEGIN
 	SET @Name = 
 	(
@@ -52,13 +52,23 @@ BEGIN
 		WHERE EmployeeID = @EmployerID
 	)
 	PRINT @Name
-	SET @EmployerID = 
-	(
-		SELECT ReportsTo 
-		FROM Northwind.Employees 
-		WHERE EmployeeID = @EmployerID
-	)
 	SET @Sym = @Sym + '  '
+	WHILE (@EmpID IS NOT NULL)
+	BEGIN
+		SET @EmpID = 
+		(
+			SELECT MIN(EmployeeID)
+			FROM Northwind.Employees 
+			WHERE EmployeeID > @EmpID
+		)
+		IF EXISTS 
+		(
+			SELECT ReportsTo
+			FROM Northwind.Employees
+			WHERE ReportsTo = @EmployerID AND @EmpID = EmployeeID
+		)
+		EXEC SubordinationInfo @EmpID, @Sym
+	END
 END
 GO
 
