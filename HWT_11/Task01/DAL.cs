@@ -5,7 +5,7 @@
     using System.Data;
     using System.Data.SqlClient;
 
-    public class DAL
+    public class DAL//todo pn не очень хорошо, что ты не разбил файлы классов по подпапкам. Напрашивается как минимум одна папка "Models".
     {
         private string connectionString;
         public DateTime? dateNULL = null;

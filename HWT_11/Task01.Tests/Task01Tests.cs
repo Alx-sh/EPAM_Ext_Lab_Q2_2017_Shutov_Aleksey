@@ -7,7 +7,7 @@
     [TestClass]
     public class Task01Tests
     {
-        string connectionString = @"Data Source=(local);Initial Catalog=Northwind;Integrated Security=True";
+        string connectionString = @"Data Source=(local);Initial Catalog=Northwind;Integrated Security=True";//todo pn не очень круто. Лучше в config запихнуть, потому что конфиги можно менять и при запущенном приложении.
 
         [TestMethod]
         public void ShowOrdersTest()
@@ -69,7 +69,7 @@
         }
 
         [TestMethod]
-        public void SetOrderDateTest()
+        public void SetOrderDateTest()//todo pn тест упал
         {
             DAL dal = new DAL(connectionString);
             //Создание заказа для теста.
@@ -86,8 +86,8 @@
         }
 
         [TestMethod]
-        public void SetShippedDateTest()
-        {
+        public void SetShippedDateTest()//todo pn тест упал
+		{
             DAL dal = new DAL(connectionString);
             //Создание заказа для теста.
             CreateOrderTest();
