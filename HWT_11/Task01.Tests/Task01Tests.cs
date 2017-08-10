@@ -2,12 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class Task01Tests
     {
-        string connectionString = @"Data Source=(local);Initial Catalog=Northwind;Integrated Security=True";//todo pn не очень круто. Лучше в config запихнуть, потому что конфиги можно менять и при запущенном приложении.
+        string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 
         [TestMethod]
         public void ShowOrdersTest()
@@ -65,7 +66,7 @@
             Assert.IsTrue(orders.Count < dal.ShowOrders().Count);
 
             //Удаление всех созданных заказов для теста.
-            dal.DeleteOrder();
+            //dal.DeleteOrder();
         }
 
         [TestMethod]
@@ -78,6 +79,8 @@
             List<Order> orders = dal.ShowOrders();
             DateTime? date = DateTime.Now.Date;
             dal.SetOrderDate(date, orders[orders.Count - 1].OrderID);
+
+            orders = dal.ShowOrders();
             DateTime? date2 = orders[orders.Count - 1].OrderDate;
             Assert.AreEqual(date, date2);
 
@@ -95,6 +98,8 @@
             List<Order> orders = dal.ShowOrders();
             DateTime? date = DateTime.Now.Date;
             dal.SetShippedDate(date, orders[orders.Count - 1].OrderID);
+
+            orders = dal.ShowOrders();
             DateTime? date2 = orders[orders.Count - 1].ShippedDate;
             Assert.AreEqual(date, date2);
 

@@ -1,0 +1,23 @@
+﻿p {
+    margin: 0 0 0 20px;
+    font-weight: bold;
+}
+
+#id1, #id2  {
+    width: 100px;
+    height: 100px;
+}
+
+.Multiple {
+    float: left;
+}
+
+button {
+    width: 40px;
+    height: 30px;
+}
+.Buttons {
+    float: left;
+    margin: 10px 0 0 10px;
+    width: 50px;
+}
