@@ -1,0 +1,48 @@
+﻿@model Task01.CustEmpShipViaID
+
+@{ 
+    List<SelectListItem> list1 = new List<SelectListItem>();
+    List<SelectListItem> list2 = new List<SelectListItem>();
+    List<SelectListItem> list3 = new List<SelectListItem>();
+
+    foreach (var i in Model.CustomerListID)
+    {
+        list1.Add(new SelectListItem() { Text = i });
+    }
+
+    foreach (var i in Model.EmployeeListID)
+    {
+        list2.Add(new SelectListItem() { Text = i.ToString() });
+    }
+
+    foreach (var i in Model.ShipViaListID)
+    {
+        list3.Add(new SelectListItem() { Text = i.ToString() });
+    }
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Create order</h4>
+    </div>
+    @using (Html.BeginForm("CreateOrder", "Orders", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.CustomerListID)</dt>
+                <dd>@Html.DropDownListFor(model => model.custID, list1)</dd>
+                <dt>@Html.DisplayNameFor(model => model.EmployeeListID)</dt>
+                <dd>@Html.DropDownListFor(model => model.empID, list2)</dd>     
+                <dt>@Html.DisplayNameFor(model => model.ShipViaListID)</dt>
+                <dd>@Html.DropDownListFor(model => model.shipVia, list3)</dd> 
+                <dt>@Html.DisplayNameFor(model => model.ShipName)</dt>
+                <dd>@Html.TextBoxFor(model => model.ShipName) @Html.ValidationMessageFor(model => model.ShipName)</dd> 
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create order</button>
+        </div>
+    }
+</div>

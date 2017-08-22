@@ -1,0 +1,35 @@
+﻿@model Task01.ProductDetails
+
+@{
+    List<SelectListItem> list1 = new List<SelectListItem>();
+    
+    foreach (var i in Model.products)
+    {
+        list1.Add(new SelectListItem() { Text = i.productID.ToString() });
+    }
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Edit products</h4>
+    </div>
+    @using (Html.BeginForm("EditProducts", "Orders", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.orderID)
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.products)</dt>
+                <dd>@Html.DropDownListFor(model => model.prodID, list1)</dd>
+                <dt>@Html.DisplayNameFor(model => model.quantity)</dt>
+                <dd>@Html.TextBoxFor(model => model.quantity)</dd>
+                <dt>@Html.DisplayNameFor(model => model.discount)</dt>
+                <dd>@Html.TextBoxFor(model => model.discount)</dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create product</button>
+        </div>
+    }
+</div>

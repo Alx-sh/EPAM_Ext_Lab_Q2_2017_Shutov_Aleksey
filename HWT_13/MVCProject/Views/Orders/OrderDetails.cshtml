@@ -1,0 +1,66 @@
+﻿@using Task01;
+@model OrderAndOrderDetails
+
+<div id="modDialog2" class="modal fade">
+    <div id="dialogContent2" class="modal-dialog"></div>
+</div>
+
+<h1>Order @Html.DisplayFor(model => model.o.OrderID)</h1>
+<hr />
+<button type="button" class="btn btn-info btn-lg" onclick="location.href='@Url.Action("Index", "Orders")'">Back to Orders</button>
+<dl class="dl-horizontal">
+    <dt>@Html.DisplayNameFor(model => model.o.CustomerID)</dt>
+    <dd>@Html.DisplayFor(model => model.o.CustomerID)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.EmployeeID)</dt>
+    <dd>@Html.DisplayFor(model => model.o.EmployeeID)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.OrderDate)</dt>
+    <dd>@Html.DisplayFor(model => model.o.OrderDate)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.RequiredDate)</dt>
+    <dd>@Html.DisplayFor(model => model.o.RequiredDate)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShippedDate)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShippedDate)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipVia)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipVia)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.Freight)</dt>
+    <dd>@Html.DisplayFor(model => model.o.Freight)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipName)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipName)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipAddress)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipAddress)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipCity)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipCity)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipRegion)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipRegion)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipPostalCode)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipPostalCode)</dd>
+    <dt>@Html.DisplayNameFor(model => model.o.ShipCountry)</dt>
+    <dd>@Html.DisplayFor(model => model.o.ShipCountry)</dd>
+</dl>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().ProductID)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().ProductName)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().QuantityPerUnit)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().UnitPrice)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().Quantity)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().Discount)</th>
+            <th>@Html.DisplayNameFor(model => Model.od.FirstOrDefault().Totals)</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (OrderDetails od in Model.od)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => od.ProductID)</td>
+                <td>@Html.DisplayFor(model => od.ProductName)</td>
+                <td>@Html.DisplayFor(model => od.QuantityPerUnit)</td>
+                <td>@Html.DisplayFor(model => od.UnitPrice)</td>
+                <td>@Html.DisplayFor(model => od.Quantity)</td>
+                <td>@Html.DisplayFor(model => od.Discount)</td>
+                <td>@Html.DisplayFor(model => od.Totals)</td>
+            </tr>
+        }
+    </tbody>
+</table>

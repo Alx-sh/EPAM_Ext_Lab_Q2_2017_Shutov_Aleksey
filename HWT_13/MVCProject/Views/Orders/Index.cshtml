@@ -1,0 +1,45 @@
+﻿@using Task01;
+@model List<Order>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<h1>Orders</h1>
+<hr />
+<div class="buttons">
+    <button type="button" class="btn btn-danger btn-lg deleteOrder">Delete selected</button>
+    <button type="button" class="btn btn-primary btn-lg createOrder">Create order</button>
+</div>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().OrderID)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ShipName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().OrderStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().OrderDate)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Freight)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Order o in Model)
+        {
+            <tr>
+                <th scope="row">@Html.CheckBox(o.OrderID.ToString()) @Html.DisplayFor(model => o.OrderID)</th>
+                <td>@Html.ActionLink(o.ShipName, "EditOrder", "Orders", new { orderID = o.OrderID }, new { @class = "editOrder" })</td>
+                <td>@Html.DisplayFor(model => o.OrderStatus)</td>
+                <td>@Html.DisplayFor(model => o.OrderDate)  </td>
+                <td>@Html.DisplayFor(model => o.Freight)</td>
+                <td><button type="button" class="btn btn-info" onclick="location.href='@Url.Action("OrderDetails", "Orders", new { orderID = o.OrderID })'">Order Details</button></td>
+            </tr>
+        }
+    </tbody>
+</table>

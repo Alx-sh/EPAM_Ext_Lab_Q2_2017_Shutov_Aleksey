@@ -1,0 +1,46 @@
+﻿@using Task01;
+@model Order
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Order details</h4>
+    </div>
+    @using (Html.BeginForm("EditOrder", "Orders", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(order => order.OrderID)
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dd>@Html.HiddenFor(order => order.CustomerID)</dd>
+                <dd>@Html.HiddenFor(order => order.EmployeeID)</dd>
+                <dt>@Html.DisplayNameFor(order => order.OrderDate)</dt>
+                <dd>@Html.TextBoxFor(order => order.OrderDate) @Html.ValidationMessageFor(model => model.OrderDate)</dd>
+                <dt>@Html.DisplayNameFor(order => order.RequiredDate)</dt>
+                <dd>@Html.TextBoxFor(order => order.RequiredDate) @Html.ValidationMessageFor(model => model.RequiredDate)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShippedDate)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShippedDate) @Html.ValidationMessageFor(model => model.ShippedDate)</dd>
+                <dd>@Html.HiddenFor(order => order.ShipVia)</dd>
+                <dt>@Html.DisplayNameFor(order => order.Freight)</dt>
+                <dd>@Html.TextBoxFor(order => order.Freight)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipName)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipName) @Html.ValidationMessageFor(model => model.ShipName)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipAddress)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipAddress)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipCity)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipCity)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipRegion)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipRegion)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipPostalCode)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipPostalCode)</dd>
+                <dt>@Html.DisplayNameFor(order => order.ShipCountry)</dt>
+                <dd>@Html.TextBoxFor(order => order.ShipCountry)</dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    }
+</div>
