@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {//todo pn почему на следующую не могу перейти? И почему с 1й на последнюю не могу перейти?
     var count = i = 5;
     var numPage = location.href.substr((location.href.length-6), 1);
     var countPages = 4;

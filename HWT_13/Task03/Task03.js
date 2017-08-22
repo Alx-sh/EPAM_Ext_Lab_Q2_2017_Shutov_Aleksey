@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {//todo pn посмотри, что будет, если добавить ещё один такой же контрол. Работать будет только первый.
     var firstMiltiple = "#id1";
     var secondMiltiple = "#id2";
 
