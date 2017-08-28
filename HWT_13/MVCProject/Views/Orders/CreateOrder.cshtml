@@ -20,6 +20,7 @@
         list3.Add(new SelectListItem() { Text = i.ToString() });
     }
 }
+
 <div class="modal-content">
     <div class="modal-header">
         <button class="close" data-dismiss="modal" area-hidden="true">X</button>
@@ -29,15 +30,15 @@
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
-            <dl class="dl-horizontal">
-                <dt>@Html.DisplayNameFor(model => model.CustomerListID)</dt>
-                <dd>@Html.DropDownListFor(model => model.custID, list1)</dd>
-                <dt>@Html.DisplayNameFor(model => model.EmployeeListID)</dt>
-                <dd>@Html.DropDownListFor(model => model.empID, list2)</dd>     
-                <dt>@Html.DisplayNameFor(model => model.ShipViaListID)</dt>
-                <dd>@Html.DropDownListFor(model => model.shipVia, list3)</dd> 
-                <dt>@Html.DisplayNameFor(model => model.ShipName)</dt>
-                <dd>@Html.TextBoxFor(model => model.ShipName) @Html.ValidationMessageFor(model => model.ShipName)</dd> 
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CustomerListID)</dt>
+                <dd class="col-sm-9">@Html.DropDownListFor(model => model.custID, list1, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmployeeListID)</dt>
+                <dd class="col-sm-9">@Html.DropDownListFor(model => model.empID, list2, new { @class = "form-control" })</dd>     
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ShipViaListID)</dt>
+                <dd class="col-sm-9">@Html.DropDownListFor(model => model.shipVia, list3, new { @class = "form-control" })</dd> 
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ShipName)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(model => model.ShipName, new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.ShipName)</dd> 
             </dl>
         </div>
         <div class="modal-footer">

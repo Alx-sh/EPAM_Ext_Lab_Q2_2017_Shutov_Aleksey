@@ -1,4 +1,12 @@
-﻿<div class="page-header">
-    <button type="button" class="btn btn-info btn-lg" onclick="location.href='@Url.Action("Index", "Orders")'">Back to Orders</button>
+﻿<div class="modal show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>@ViewBag.Message</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info back">OK</button>
+            </div>
+        </div>
+    </div>
 </div>
-<h2>@ViewBag.Message</h2>

@@ -198,7 +198,6 @@
         public List<Product> SelectProducts()
         {
             List<Product> list = new List<Product>();
-            Product prod = new Product();
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
@@ -210,12 +209,14 @@
                                         ,ProductName
                                         ,QuantityPerUnit
                                         ,UnitPrice 
-                                        FROM Northwind.Products";
+                                        FROM Northwind.Products
+                                        ORDER BY ProductName";
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        Product prod = new Product();
                         prod.productID = reader.GetInt32(0);
                         prod.productName = reader.GetString(1);
                         prod.QuantityPerUnit = reader.GetString(2);
@@ -236,12 +237,12 @@
 
                 var command = connection.CreateCommand();
                 command.CommandText =
-                    @"INSERT INTO Northwind.Order Details
-                                 OrderID
+                    @"INSERT INTO Northwind.[Order Details]
+                                (OrderID
                                 ,ProductID
                                 ,UnitPrice
                                 ,Quantity
-                                ,Discount
+                                ,Discount)
                        VALUES(
                                  @OrderID
                                 ,@ProductID
@@ -544,21 +545,33 @@
                 connection.Open();
 
                 var command = connection.CreateCommand();
+                int number;
                 if (OrderID != 0)
                 {
                     command.CommandText =
+                        @"DELETE FROM Northwind.[Order Details]
+                      WHERE OrderID = @OrderID";
+                    Parameter(command, "@OrderID", OrderID, DbType.Int32);
+
+                    number = command.ExecuteNonQuery();
+
+                    command.CommandText =
                         @"DELETE FROM Northwind.Orders
                       WHERE OrderID = @OrderID";
-
-                    Parameter(command, "@OrderID", OrderID, DbType.Int32);
                 }
                 else
                 {
                     command.CommandText =
+                        @"DELETE FROM Northwind.[Order Details]
+                      WHERE OrderID > 11077";
+
+                    number = command.ExecuteNonQuery();
+
+                    command.CommandText =
                         @"DELETE FROM Northwind.Orders
                       WHERE OrderID > 11077";
                 }
-                int number = command.ExecuteNonQuery();
+                number = command.ExecuteNonQuery();
             }
         }
 

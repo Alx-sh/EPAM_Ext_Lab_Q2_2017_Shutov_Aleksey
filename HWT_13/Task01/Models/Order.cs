@@ -9,10 +9,13 @@
         public string CustomerID { get; set; }
         public int EmployeeID { get; set; }
         [Required]
+        [Range(typeof(DateTime), "1/1/1996", "1/1/2096")]
         public DateTime? OrderDate { get; private set; }
         [Required]
+        [Range(typeof(DateTime), "1/1/1996", "1/1/2096")]
         public DateTime? RequiredDate { get; private set; }
         [Required]
+        [Range(typeof(DateTime), "1/1/1996", "1/1/2096")]
         public DateTime? ShippedDate { get; private set; }
         public int ShipVia { get; private set; }
         public decimal Freight { get; private set; }

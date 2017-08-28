@@ -1,6 +1,5 @@
-﻿@using Task01;
-@model List<Order>
-
+﻿@model PagedList.IPagedList<Task01.Order>
+@using PagedList.Mvc;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -30,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Order o in Model)
+        @foreach (Task01.Order o in Model)
         {
             <tr>
                 <th scope="row">@Html.CheckBox(o.OrderID.ToString()) @Html.DisplayFor(model => o.OrderID)</th>
@@ -43,3 +42,6 @@
         }
     </tbody>
 </table>
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

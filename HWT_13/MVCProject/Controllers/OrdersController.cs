@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Task01;
+using PagedList.Mvc;
+using PagedList;
+using MVCProject.Properties;
 
 namespace MVCProject.Controllers
 {
@@ -13,9 +16,11 @@ namespace MVCProject.Controllers
         DAL dal = new DAL(ConfigurationManager.ConnectionStrings["Conection"].ConnectionString);
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(dal.ShowOrders());
+            int pageSize = 50;
+            int pageNumber = (page ?? 1);
+            return View(dal.ShowOrders().ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -43,27 +48,27 @@ namespace MVCProject.Controllers
         {
             if (string.IsNullOrWhiteSpace(shipName))
             {
-                ModelState.AddModelError("shipName", "Некорректное название");
-                ViewBag.Message += "Некорректное название shipName. ";//todo pn в ресурсы
+                ModelState.AddModelError("shipName", Resources.ErrorShipName);
+                ViewBag.Message += Resources.ErrorShipName;
             }
 
             if (ModelState.IsValid)
             {
                 Order o = new Order(custID, int.Parse(empID), int.Parse(shipVia), shipName);
                 o.OrderID = dal.CreateOrder(o);
-                ViewBag.Message = "Заказ создан!";
+                ViewBag.Message = Resources.OrderIsCreated;
                 return View("Result");
             }
 
-            ViewBag.Message += "Запрос не прошел валидацию!";//todo pn в ресурсы
-			return View("Result");
+            ViewBag.Message += Resources.ErrorValidation;
+            return View("Result");
         }
 
         [HttpGet]
         public ActionResult DeleteSelected()
         {
-            ViewBag.Message = "Заказы удалены!";//todo pn в ресурсы
-			return View("Result");
+            ViewBag.Message = Resources.DeleteSelected;
+            return View("Result");
         }
 
         [HttpPost]
@@ -87,29 +92,29 @@ namespace MVCProject.Controllers
             DateTime? ShippedDate, int ShipVia, decimal Freight, string ShipName, string ShipAddress,
             string ShipCity, string ShipRegion, string ShipPostalCode, string ShipCountry)
         {
-            if (OrderDate < DateTime.Now.Date)//todo pn нужно ещё добавить атрибуты валидации к моделям (MinValue/MaxValue итп)
+            if (OrderDate < DateTime.Now.Date)
             {
-                ModelState.AddModelError("OrderDate", "Некорректная дата");//todo pn в ресурсы
-				ViewBag.Message = "Некорректная дата OrderDate. ";//todo pn в ресурсы
-			}
+                ModelState.AddModelError("OrderDate", Resources.ErrorOrderDate);
+                ViewBag.Message = Resources.ErrorOrderDate;
+            }
 
             if (RequiredDate < DateTime.Now.Date)
             {
-                ModelState.AddModelError("RequiredDate", "Некорректная дата");//todo pn в ресурсы
-				ViewBag.Message = "Некорректная дата RequiredDate. ";//todo pn в ресурсы
-			}
+                ModelState.AddModelError("RequiredDate", Resources.ErrorRequiredDate);
+                ViewBag.Message = Resources.ErrorRequiredDate;
+            }
 
             if (ShippedDate < DateTime.Now.Date)
             {
-                ModelState.AddModelError("ShippedDate", "Некорректная дата");//todo pn в ресурсы
-				ViewBag.Message = "Некорректная дата ShippedDate. ";//todo pn в ресурсы
-			}
+                ModelState.AddModelError("ShippedDate", Resources.ErrorShippedDate);
+                ViewBag.Message = Resources.ErrorShippedDate;
+            }
 
             if (string.IsNullOrWhiteSpace(ShipName))
             {
-                ModelState.AddModelError("ShipName", "Некорректное название");//todo pn в ресурсы
-				ViewBag.Message += "Некорректное название ShipName. ";//todo pn в ресурсы
-			}
+                ModelState.AddModelError("ShipName", Resources.ErrorShipName);
+                ViewBag.Message += Resources.ErrorShipName;
+            }
 
             if (ModelState.IsValid)
             {
@@ -132,57 +137,71 @@ namespace MVCProject.Controllers
 
                 dal.UpdateOrder(o);
 
-                ViewBag.Message = "Заказ обновлен - №" + o.OrderID;//todo pn в ресурсы
-				return View("Result");
+                ViewBag.Message = Resources.UpdateOrder + o.OrderID;
+                return View("Result");
             }
 
-            ViewBag.Message += "Запрос не прошел валидацию!";//todo pn в ресурсы
-			return View("Result");
+            ViewBag.Message += Resources.ErrorValidation;
+            return View("Result");
         }
 
         [HttpGet]
-        public ActionResult EditProducts(int orderID)
+        public ActionResult EditProducts(string orderID)
         {
             ProductDetails pd = new ProductDetails();
-            pd.orderID = orderID;
+            pd.orderID = int.Parse(orderID);
             pd.products = dal.SelectProducts();
             return PartialView(pd);
         }
 
         [HttpPost]
-        public ActionResult EditProducts(int orderID, string prodID, int quantity, float discount)
+        public ActionResult EditProducts(int orderID, string prodName, int quantity, float discount)
         {
             ProductDetails pd = new ProductDetails();
+            Product prod = new Product();
+            if (quantity <= 0)
+            {
+                ModelState.AddModelError("Quantity", Resources.ErrorQuantity);
+                ViewBag.Message += Resources.ErrorQuantity;
+            }
+
+
+            if (discount < 0 || discount > 1)
+            {
+                ModelState.AddModelError("Discount", Resources.ErrorDiscount);
+                ViewBag.Message += Resources.ErrorDiscount;
+            }
+
             if (ModelState.IsValid)
             {
                 foreach (var i in dal.SelectProducts())
                 {
-                    if (i.productID == int.Parse(prodID))
+                    if (i.productName == prodName)
                     {
-                        pd.products.Add(i);
+                        prod = i;
                     }
                 }
                 pd.quantity = quantity;
                 pd.discount = discount;
-                pd.totals = (pd.products.FirstOrDefault().UnitPrice - pd.products.FirstOrDefault().UnitPrice * (decimal)discount) * pd.quantity;
+                pd.totals = (prod.UnitPrice - prod.UnitPrice * (decimal)discount) * pd.quantity;
 
                 OrderDetails od = new OrderDetails(
-                    pd.products.FirstOrDefault().productID,//todo pn неоптимальный код. ты 6 раза заставляешь linq искать первый элемент
-                    pd.products.FirstOrDefault().productName,
-                    pd.products.FirstOrDefault().QuantityPerUnit,
-                    pd.products.FirstOrDefault().UnitPrice,
+                    prod.productID,
+                    prod.productName,
+                    prod.QuantityPerUnit,
+                    prod.UnitPrice,
                     pd.quantity,
                     pd.discount,
                     pd.totals,
-                    "NotExecuted");//todo pn возможно, в enum
-				od.OrderID = orderID;
+                    Status.NotExecuted.ToString());
+                od.OrderID = orderID;
                 dal.CreateOrderDetails(od);
-                ViewBag.Message = "Заказ обновлен - №" + od.OrderID;//todo pn в ресурсы
-				return View("Result");
+                ViewBag.Message = Resources.UpdateOrder + od.OrderID;
+                return View("Result");
             }
 
-            ViewBag.Message += "Запрос не прошел валидацию!";//todo pn в ресурсы
-			return View("Result");
+            ViewBag.Message += Resources.ErrorValidation;
+            return View("Result");
         }
     }
 }

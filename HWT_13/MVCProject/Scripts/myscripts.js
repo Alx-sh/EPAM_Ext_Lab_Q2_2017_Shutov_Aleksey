@@ -32,17 +32,38 @@
         }
 
         if (confirm("Вы уверены, что хотите удалить следующие заказы?\n" + mes)) {
-            $.post('/Orders/DeleteSelected', { mas: arr }, function (data) {
+            $.post('/Orders/DeleteSelected', { mas: arr }, function () {
                 location.href = "/Orders/DeleteSelected";
             }); 
         }
     });
 
+    $('.back').click(function (e) {
+        location.href = "/Orders/Index";
+    });
+
     $('.editProducts').click(function (e) {
         e.preventDefault();
-        $.get('/Orders/EditProducts', { orderID : OrderID}, function (data) {
-            $('#dialogContent2').html(data);
-            $('#modDialog2').modal('show');
+        var OrderID = $.getUrlVar('orderID');
+        $.get('/Orders/EditProducts', { orderID: OrderID }, function (data) {
+            $('#dialogContent').html(data);
+            $('#modDialog').modal('show');
         });
+    });
+
+    $.extend({
+        getUrlVars: function () {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        },
+        getUrlVar: function (name) {
+            return $.getUrlVars()[name];
+        }
     });
 })

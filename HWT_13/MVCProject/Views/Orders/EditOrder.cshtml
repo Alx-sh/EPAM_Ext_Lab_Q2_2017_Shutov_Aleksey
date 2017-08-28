@@ -12,30 +12,30 @@
 
         @Html.HiddenFor(order => order.OrderID)
         <div class="modal-body">
-            <dl class="dl-horizontal">
+            <dl class="row">
                 <dd>@Html.HiddenFor(order => order.CustomerID)</dd>
                 <dd>@Html.HiddenFor(order => order.EmployeeID)</dd>
-                <dt>@Html.DisplayNameFor(order => order.OrderDate)</dt>
-                <dd>@Html.TextBoxFor(order => order.OrderDate) @Html.ValidationMessageFor(model => model.OrderDate)</dd>
-                <dt>@Html.DisplayNameFor(order => order.RequiredDate)</dt>
-                <dd>@Html.TextBoxFor(order => order.RequiredDate) @Html.ValidationMessageFor(model => model.RequiredDate)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShippedDate)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShippedDate) @Html.ValidationMessageFor(model => model.ShippedDate)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.OrderDate)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.OrderDate, new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.OrderDate)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.RequiredDate)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.RequiredDate, new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.RequiredDate)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShippedDate)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShippedDate, new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.ShippedDate)</dd>
                 <dd>@Html.HiddenFor(order => order.ShipVia)</dd>
-                <dt>@Html.DisplayNameFor(order => order.Freight)</dt>
-                <dd>@Html.TextBoxFor(order => order.Freight)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipName)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipName) @Html.ValidationMessageFor(model => model.ShipName)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipAddress)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipAddress)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipCity)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipCity)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipRegion)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipRegion)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipPostalCode)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipPostalCode)</dd>
-                <dt>@Html.DisplayNameFor(order => order.ShipCountry)</dt>
-                <dd>@Html.TextBoxFor(order => order.ShipCountry)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.Freight)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.Freight, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipName)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipName, new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.ShipName)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipAddress)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipAddress, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipCity)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipCity, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipRegion)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipRegion, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipPostalCode)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipPostalCode, new { @class = "form-control" })</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(order => order.ShipCountry)</dt>
+                <dd class="col-sm-9">@Html.TextBoxFor(order => order.ShipCountry, new { @class = "form-control" })</dd>
             </dl>
         </div>
         <div class="modal-footer">
