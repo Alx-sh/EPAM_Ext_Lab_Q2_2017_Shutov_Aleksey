@@ -3,6 +3,7 @@
     using DataAccessLayer;
     using DataAccessLayer.Models;
     using PagedList;
+    using Properties;
     using System.Configuration;
     using System.Web.Mvc;
     using System.Web.Security;
@@ -15,7 +16,7 @@
         {
             if (User.IsInRole("Banned"))
             {
-                ViewBag.Message = "You have been banned! The entrance isn't executed.";
+                ViewBag.Message = Resources.MessageForBanned;
                 FormsAuthentication.SignOut();
 
                 return View("Result");
@@ -61,20 +62,19 @@
 
                 if (dal.CreateTopic(topic) > 0)
                 {
-                    ViewBag.Message = "Topic created!";
+                    ViewBag.Message = Resources.CreateTopic;
                 }
                 else
                 {
-                    ViewBag.ResultTitle = "Topic error";
-                    ViewBag.Message = "Topic with such name already exists.";
+                    ViewBag.ResultTitle = Resources.ErrorTopic;
+                    ViewBag.Message = Resources.ErrorTopicName;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Topic error");
-                ViewBag.ResultTitle = "Topic error";
-                ViewBag.Message = "<p>Topic name has to be in the range 4-20.</p>" +
-                                   "<p>Text message has to be in the range 1-4000.</p>";
+                ModelState.AddModelError("", Resources.ErrorTopic);
+                ViewBag.ResultTitle = Resources.ErrorTopic;
+                ViewBag.Message = Resources.TopicNameValid + Resources.TextMessageValid;
             }
 
             return View("Result");
@@ -100,19 +100,19 @@
             {
                 if (dal.EditTopic(topic) > 0)
                 {
-                    ViewBag.Message = "Topic edited!";
+                    ViewBag.Message = Resources.EditTopic;
                 }
                 else
                 {
-                    ViewBag.ResultTitle = "Topic error";
-                    ViewBag.Message = "The topic with such name already exists.";
+                    ViewBag.ResultTitle = Resources.ErrorTopic;
+                    ViewBag.Message = Resources.ErrorTopicName;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Topic error");
-                ViewBag.ResultTitle = "Topic error";
-                ViewBag.Message = "The topic name has to be in the range 4-20.";
+                ModelState.AddModelError("", Resources.ErrorTopic);
+                ViewBag.ResultTitle = Resources.ErrorTopic;
+                ViewBag.Message = Resources.TopicNameValid;
             }
 
             return View("Result");
@@ -132,14 +132,15 @@
 
                 if (dal.CreateMessage(mes) > 0)
                 {
-                    ViewBag.Message = "Message added!";
+                    ViewBag.Message = Resources.AddMessage;
+
                     return View("Result");
                 }
             }
 
-            ModelState.AddModelError("", "Message error");
-            ViewBag.ResultTitle = "Message error";
-            ViewBag.Message = "Text message has to be in the range 1-4000.";
+            ModelState.AddModelError("", Resources.ErrorMessage);
+            ViewBag.ResultTitle = Resources.ErrorMessage;
+            ViewBag.Message = Resources.TextMessageValid;
 
             return View("Result");
         }
@@ -164,14 +165,14 @@
             {
                 if (dal.EditMessage(mes) > 0)
                 {
-                    ViewBag.Message = "Message edited!";
+                    ViewBag.Message = Resources.EditMessage;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Message error");
-                ViewBag.ResultTitle = "Message error";
-                ViewBag.Message = "Text message has to be in the range 1-4000.";
+                ModelState.AddModelError("", Resources.ErrorMessage);
+                ViewBag.ResultTitle = Resources.ErrorMessage;
+                ViewBag.Message = Resources.TextMessageValid;
             }
 
             return View("Result");
@@ -194,14 +195,14 @@
             {
                 if (dal.DeleteMessage(messageID) > 0)
                 {
-                    ViewBag.Message = "Message deleted!";
+                    ViewBag.Message = Resources.DeleteMessage;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Message error");
-                ViewBag.ResultTitle = "Message error";
-                ViewBag.Message = "Error delete message!";
+                ModelState.AddModelError("", Resources.ErrorMessage);
+                ViewBag.ResultTitle = Resources.ErrorMessage;
+                ViewBag.Message = Resources.DeleteMessageError;
             }
 
             return View("Result");

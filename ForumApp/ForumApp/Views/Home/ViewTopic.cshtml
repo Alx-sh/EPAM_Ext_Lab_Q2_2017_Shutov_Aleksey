@@ -1,10 +1,11 @@
 ﻿@model PagedList.IPagedList<DataAccessLayer.Models.Message>
 @using PagedList.Mvc;
+@using ForumApp.Properties
 
 <h4>/ @Html.ActionLink("Forum", "Index", "Home") / @Html.ActionLink(Model.FirstOrDefault().TopicName, "ViewTopic", "Home", new { topicID = Model.FirstOrDefault().TopicID }, null)</h4>
 
 <div>
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Resources.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.of @Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("ViewTopic", new { Model.FirstOrDefault().TopicID, page }))
 </div>
 
@@ -30,10 +31,10 @@
                     {
                         @Html.HiddenFor(model => mes.MessageID)
                         <div class="col-md-offset-10">
-                            @Html.ActionLink("Edit", "EditMessage", "Home", new { messageID = mes.MessageID }, null)
+                            @Html.ActionLink(Resources.Edit, "EditMessage", "Home", new { messageID = mes.MessageID }, null)
                             @if (numMes > 1)
                             {
-                                @Html.ActionLink("Delete", "DeleteMessage", "Home", new { messageID = mes.MessageID }, null)
+                                @Html.ActionLink(Resources.Delete, "DeleteMessage", "Home", new { messageID = mes.MessageID }, null)
                             }
                         </div>
                     }
@@ -45,11 +46,11 @@
                 <th>
                     <pre style="white-space: pre;">
 <b style="font-size: large;">@Html.ActionLink(mes.MessageAuthor, "Information", "Account", new { userName = mes.MessageAuthor }, null)</b>
-Role: 
+@Resources.Role: 
     @Html.DisplayFor(model => mes.user.TypeUser)
-Registration Date: 
+@Resources.RegistrationDate: 
     @Html.DisplayFor(model => mes.user.RegistrationDate)
-Count Messages: 
+@Resources.CountMessages: 
     @Html.DisplayFor(model => mes.user.CountMessages)
                     </pre>
                 </th>
@@ -67,9 +68,9 @@ Count Messages:
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(model => model.FirstOrDefault().TopicID)
-            <h2>Input your message:</h2>
-            <div>@Html.TextArea("text", null, 5, 40, new { @class = "textarea", placeholder = "Message" }) @Html.ValidationMessage("text")</div>
-            <button type="submit" class="btn btn-primary">Add mesasge</button>
+            <h2>@Resources.InputMessage:</h2>
+            <div>@Html.TextArea("text", null, 5, 40, new { @class = "textarea", placeholder = Resources.Message }) @Html.ValidationMessage("text")</div>
+            <button type="submit" class="btn btn-primary">@Resources.AddMesasgeTitle</button>
         }
     </div>
 }

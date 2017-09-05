@@ -1,22 +1,23 @@
 ﻿@model DataAccessLayer.Models.Message
+@using ForumApp.Properties;
 
 <div class="modal show">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close back" data-dismiss="modal" area-hidden="true">X</button>
-                <h4>Delete message</h4>
+                <h4>@Resources.DeleteMessageTitle</h4>
             </div>
             @using (Html.BeginForm("DeleteMessage", "Home", FormMethod.Post))
             {
                 <div class="modal-body">
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.MessageID)
-                    <h2>Are you sure, that you want delete message?</h2>
+                    <h2>@Resources.ConfirmDelMes</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary back">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-secondary back">@Resources.No</button>
+                    <button type="submit" class="btn btn-primary">@Resources.Yes</button>
                 </div>
             }
         </div>

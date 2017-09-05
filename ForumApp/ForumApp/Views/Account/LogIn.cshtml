@@ -1,9 +1,10 @@
 ﻿@model DataAccessLayer.Models.User
+@using ForumApp.Properties;
 
 <div class="modal-content">
     <div class="modal-header">
         <button class="close" data-dismiss="modal" area-hidden="true">X</button>
-        <h4>Login</h4>
+        <h4>@Resources.Login</h4>
     </div>
     <div class="modal-body">
         <div class="box">
@@ -12,9 +13,9 @@
                     @using (Html.BeginForm("LogIn", "Account", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "User Name" }) @Html.ValidationMessageFor(model => model.UserName)
-                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" }) @Html.ValidationMessageFor(model => model.Password)
-                        <input class="btn btn-login" type="submit" value="Login">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = Resources.UserName }) @Html.ValidationMessageFor(model => model.UserName)
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = Resources.Password }) @Html.ValidationMessageFor(model => model.Password)
+                        <input class="btn btn-login" type="submit" value="@Resources.Login">
                     }
                 </div>
             </div>

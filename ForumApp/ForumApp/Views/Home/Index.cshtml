@@ -1,13 +1,14 @@
 ﻿@model PagedList.IPagedList<DataAccessLayer.Models.Topic>
 @using PagedList.Mvc;
+@using ForumApp.Properties
 
 @if (User.Identity.IsAuthenticated)
 {
-    <button type="button" class="btn btn-info CreateTopic" style="margin-top: 10px;">CreateTopic</button>
+    <button type="button" class="btn btn-info CreateTopic" style="margin-top: 10px;">@Resources.CreateTopicTitle</button>
 
     if (User.IsInRole("Administrator"))
     {
-        <button type="button" class="btn btn-info" style="margin-top: 10px;" onclick="location.href='@Url.Action("ShowUsers", "Home")'">Show Users</button>
+        <button type="button" class="btn btn-info" style="margin-top: 10px;" onclick="location.href='@Url.Action("ShowUsers", "Home")'">@Resources.ShowUsers</button>
     }
 }
 
@@ -22,10 +23,10 @@
     <thead class="thead-inverse">
         <tr>
             <th>@Html.DisplayName("#")</th>
-            <th>@Html.DisplayName("Topic")</th>
-            <th>@Html.DisplayName("Author")</th>
-            <th>@Html.DisplayName("Last message")</th>
-            <th>@Html.DisplayName("Count message")</th>
+            <th>@Html.DisplayName(Resources.TopicName)</th>
+            <th>@Html.DisplayName(Resources.Author)</th>
+            <th>@Html.DisplayName(Resources.LastMessage)</th>
+            <th>@Html.DisplayName(Resources.CountMessages)</th>
         </tr>
     </thead>
     <tbody>
@@ -37,7 +38,7 @@
                     @Html.ActionLink(topic.TopicName, "ViewTopic", "Home", new { topicID = topic.TopicID }, null)
                     @if (User.Identity.Name.Equals(topic.mes.MessageAuthor) || User.IsInRole("Administrator"))
                     {
-                        @Html.ActionLink("[Edit]", "EditTopic", "Home", new { topicID = topic.TopicID }, null)
+                        @Html.ActionLink(Resources.EditInBlock, "EditTopic", "Home", new { topicID = topic.TopicID }, null)
                     }
                 </td>
                 <td>@Html.DisplayFor(model => topic.mes.MessageAuthor)</td>
@@ -49,6 +50,6 @@
 </table>
 
 <div>
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Resources.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.of @Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </div>

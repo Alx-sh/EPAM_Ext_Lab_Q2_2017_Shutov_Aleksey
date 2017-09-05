@@ -1,6 +1,7 @@
 ﻿@model List<string>
+@using ForumApp.Properties
 
-<button type="button" class="btn btn-info" style="margin: 15px;" onclick="location.href='@Url.Action("Index", "Home", new { page = 1 })'">Back to Forum</button>
+<button type="button" class="btn btn-info" style="margin: 15px;" onclick="location.href='@Url.Action("Index", "Home", new { page = 1 })'">@Resources.BackToForum</button>
 
 @{ int numMes = 1; }
 
@@ -12,7 +13,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>@Resources.UserName</th>
         </tr>
     </thead>
     <tbody>

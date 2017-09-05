@@ -3,6 +3,7 @@
     using DataAccessLayer;
     using DataAccessLayer.Models;
     using PagedList;
+    using Properties;
     using System.Configuration;
     using System.Web.Mvc;
     using System.Web.Security;
@@ -26,20 +27,19 @@
                 if (dal.ValidateUser(user))
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, true);
-                    ViewBag.Message = "Welcome, " + user.UserName + "!";
+                    ViewBag.Message = Resources.Welcome + user.UserName;
                 }
                 else
                 {
-                    ViewBag.ResultTitle = "Incorrect data input";
-                    ViewBag.Message = !dal.ExistUser(user.UserName) ? "The user doesn't exist" : "Incorrect password!";
+                    ViewBag.ResultTitle = Resources.IncorrectData;
+                    ViewBag.Message = !dal.ExistUser(user.UserName) ? Resources.UserNotEx : Resources.IncorrectPass;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Incorrect data input");
-                ViewBag.ResultTitle = "Incorrect data input";
-                ViewBag.Message = "<p>User Name has to be in the range 4-20.</p>" +
-                                  "<p>Password has to be in the range 8-20.</p>";
+                ModelState.AddModelError("", Resources.IncorrectData);
+                ViewBag.ResultTitle = Resources.IncorrectData;
+                ViewBag.Message = Resources.UserNameValid + Resources.PassValid;
             }
 
             return View("Result");
@@ -49,7 +49,8 @@
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            ViewBag.Message = "Good bye, " + User.Identity.Name + ".";
+            ViewBag.Message = Resources.GoodBye + User.Identity.Name;
+
             return View("Result");
         }
 
@@ -67,30 +68,30 @@
             {
                 if (!user.Password.Equals(user.Password_confirmation))
                 {
-                    ViewBag.ResultTitle = "Registration error";
-                    ViewBag.Message = "Passwords don't coincide!";
+                    ViewBag.ResultTitle = Resources.RegistrationError;
+                    ViewBag.Message = Resources.PassConfirmed;
+
                     return View("Result");
                 }
 
                 if (dal.CreateUser(user) > 0)
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    ViewBag.Message = "Registration is successfully complete!";
+                    ViewBag.Message = Resources.RegistrationComplete;
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Registration error");
+                    ModelState.AddModelError("", Resources.RegistrationError);
                     user.Password = user.Password_confirmation = string.Empty;
-                    ViewBag.ResultTitle = "Registration error";
-                    ViewBag.Message = "The user exists!";
+                    ViewBag.ResultTitle = Resources.RegistrationError;
+                    ViewBag.Message = Resources.UserEx;
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Incorrect data input!");
-                ViewBag.ResultTitle = "Registration error";
-                ViewBag.Message = "<p>User Name has to be in the range 4-20.</p>" +
-                                  "<p>Password has to be in the range 8-20.</p>";
+                ModelState.AddModelError("", Resources.IncorrectData);
+                ViewBag.ResultTitle = Resources.RegistrationError;
+                ViewBag.Message = Resources.UserNameValid + Resources.PassValid;
       
             }
 
@@ -103,6 +104,7 @@
             UserInformationViewModel ui = new UserInformationViewModel();
             ui.typeUsers = dal.ShowTypeUsers();
             ui.user = dal.ShowUserInfo(userName);
+
             return View(ui);
         }
 
@@ -110,7 +112,8 @@
         public ActionResult Information(User user)
         {
             int typeUserID = dal.SelectTypeUserID(user.TypeUser);
-            ViewBag.Message = dal.EditTypeUser(user.UserID, typeUserID) > 0 ? "Type user changed!" : "Error change type user!";
+            ViewBag.Message = dal.EditTypeUser(user.UserID, typeUserID) > 0 ? Resources.ChangeTypeUser : Resources.ChangeTypeUserError;
+
             return View("Result");
         }
 
@@ -118,6 +121,7 @@
         {
             int pageSize = 10;
             int pageNumber = (page ?? 1);
+
             return View(dal.ShowMessagesByOneUser(userID).ToPagedList(pageNumber, pageSize));
         }
     }

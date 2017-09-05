@@ -1,11 +1,12 @@
 ﻿@model DataAccessLayer.Models.Topic
+@using ForumApp.Properties
 
 <div class="modal show">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close back" data-dismiss="modal" area-hidden="true">X</button>
-                <h4>Edit Topic Name</h4>
+                <h4>@Resources.EditTopicNameTitle</h4>
             </div>
             <div class="modal-body">
                 <div class="box">
@@ -15,8 +16,8 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.HiddenFor(model => model.TopicID)
-                                @Html.TextBoxFor(model => model.TopicName, new { @class = "textarea", @placeholder = "Topic Name", @style = "margin-bottom: 15px;" }) @Html.ValidationMessageFor(model => model.TopicName)
-                                <input class="btn btn-register" type="submit" value="Edit Topic Name" name="commit">
+                                @Html.TextBoxFor(model => model.TopicName, new { @class = "textarea", @style = "margin-bottom: 15px;" }) @Html.ValidationMessageFor(model => model.TopicName)
+                                <input class="btn btn-register" type="submit" value="@Resources.EditTopicNameTitle" name="commit">
                             }
                         </div>
                     </div>
