@@ -1,0 +1,27 @@
+﻿@model DataAccessLayer.Models.Topic
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4>Create Topic</h4>
+    </div>
+    <div class="modal-body">
+        <div class="box">
+            <div class="content registerBox">
+                <div class="form">
+                    @using (Html.BeginForm("CreateTopic", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.TextBoxFor(model => model.TopicName, new { @class = "form-control", @placeholder = "Topic Name" }) @Html.ValidationMessageFor(model => model.TopicName)
+                        @Html.TextAreaFor(model => model.TopicMessage, new { @class = "form-control", @placeholder = "Message", @style = "margin-bottom: 5px;" }) @Html.ValidationMessageFor(model => model.TopicMessage)
+                        <input class="btn btn-register" type="submit" value="Create Topic" name="commit">
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

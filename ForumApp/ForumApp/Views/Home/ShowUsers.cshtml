@@ -1,0 +1,30 @@
+﻿@model List<string>
+
+<button type="button" class="btn btn-info" style="margin: 15px;" onclick="location.href='@Url.Action("Index", "Home", new { page = 1 })'">Back to Forum</button>
+
+@{ int numMes = 1; }
+
+<table class="table table-bordered">
+    <colgroup>
+        <col style="width: 20%;">
+        <col style="width: 80%;">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (string user in Model)
+    {
+        <tr>
+            <td>@numMes</td>
+            <td>@Html.ActionLink(user, "Information", "Account", new { userName = user }, null)</td>
+        </tr>
+        { numMes++; }
+    }
+    </tbody>
+</table>
+
+

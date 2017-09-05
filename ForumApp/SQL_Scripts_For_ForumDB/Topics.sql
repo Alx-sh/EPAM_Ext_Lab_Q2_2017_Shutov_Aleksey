@@ -1,0 +1,30 @@
+USE [ForumDB]
+GO
+
+/****** Object:  Table [dbo].[Topics]    Script Date: 05.09.2017 21:50:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Topics](
+	[TopicID] [int] IDENTITY(1,1) NOT NULL,
+	[TopicName] [nvarchar](50) NOT NULL,
+	[UserID] [int] NOT NULL,
+ CONSTRAINT [PK_Topics] PRIMARY KEY CLUSTERED 
+(
+	[TopicID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Topics]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Users] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+
+ALTER TABLE [dbo].[Topics] CHECK CONSTRAINT [FK_Topics_Users]
+GO
+
+

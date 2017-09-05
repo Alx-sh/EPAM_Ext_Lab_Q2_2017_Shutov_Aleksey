@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<DataAccessLayer.Models.Message>
+@using PagedList.Mvc;
+
+<button type="button" class="btn btn-info btn-lg" style="margin: 15px;" onclick="location.href='@Url.Action("Index", "Home", new { page = 1 })'">Back to Forum</button>
+
+@{
+    var numMes = 1 + Model.PageSize * (Model.PageNumber - 1);
+}
+
+@foreach (DataAccessLayer.Models.Message mes in Model)
+{
+    <table class="table table-bordered">
+        <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 80%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>#@numMes</th>
+                <th>
+                    <div class="col-md-4">
+                        Message Date: @Html.DisplayFor(model => mes.MessageDate)
+                    </div>
+                    <div class="col-md-4">
+                        Topic Name: @Html.ActionLink(mes.TopicName, "ViewTopic", "Home", new { topicID = mes.TopicID }, null)
+                    </div>
+                    
+                    @if (User.Identity.Name.Equals(mes.MessageAuthor) || User.IsInRole("Administrator"))
+                    {
+                        @Html.HiddenFor(model => mes.MessageID)
+                        <div class="col-md-offset-10">
+                            @Html.ActionLink("Edit", "EditMessage", "Home", new { messageID = mes.MessageID }, null)
+                        </div>
+                    }
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <pre style="white-space: pre;">
+<b style="font-size: large;">@Html.ActionLink(mes.MessageAuthor, "Information", "Account", new { userName = mes.MessageAuthor }, null)</b>
+Role: 
+    @Html.DisplayFor(model => mes.user.TypeUser)
+Registration Date: 
+    @Html.DisplayFor(model => mes.user.RegistrationDate)
+Count Messages: 
+    @Html.DisplayFor(model => mes.user.CountMessages)
+                    </pre>
+                </th>
+                <td>@Html.DisplayFor(model => mes.TextMessage)</td>
+            </tr>
+        </tbody>
+    </table>
+    { numMes++; }
+}
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("ViewTopic", new { Model.FirstOrDefault().TopicID, page }))
+</div>

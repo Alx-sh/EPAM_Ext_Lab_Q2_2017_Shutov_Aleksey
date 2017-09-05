@@ -1,0 +1,51 @@
+﻿@model DataAccessLayer.Models.UserInformationViewModel
+@{
+    List<SelectListItem> list = new List<SelectListItem>();
+
+    foreach (var i in Model.typeUsers)
+    {
+        list.Add(new SelectListItem() { Text = i });
+    }
+}
+<div class="modal show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close back" data-dismiss="modal" area-hidden="true">X</button>
+                <h4>Account Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content registerBox">
+                        <div class="form">
+                            <dl class="row">
+                                <dt class="col-sm-6">@Html.DisplayName("User Name")</dt>
+                                <dd class="col-sm-12">@Html.DisplayFor(model => model.user.UserName, new { @class = "form-control" })</dd>
+                                <dt class="col-sm-6">@Html.DisplayName("Registration Date")</dt>
+                                <dd class="col-sm-12">@Html.DisplayFor(model => model.user.RegistrationDate, new { @class = "form-control" })</dd> 
+                                <dt class="col-sm-6">@Html.DisplayName("Count Messages")</dt>
+                                <dd class="col-sm-12">@Html.DisplayFor(model => model.user.CountMessages, new { @class = "form-control" })</dd>
+                                <dt class="col-sm-6">@Html.DisplayName("Type User")</dt>
+                                <dd class="col-sm-12">@Html.DisplayFor(model => model.user.TypeUser, new { @class = "form-control" })</dd>
+                                @if (User.IsInRole("Administrator") && !User.Identity.Name.Equals(Model.user.UserName))
+                                {
+                                    using (Html.BeginForm("Information", "Account", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.HiddenFor(model => model.user.UserID)
+                                        <dt class="col-sm-6">@Html.DisplayName("New Type User")</dt>
+                                        <dd class="col-sm-12">
+                                            @Html.DropDownListFor(model => model.user.TypeUser, list, new { @class = "form-control", @style = "margin: 15px;" })
+                                            <input class="btn btn-danger" style="margin: 15px;" type="submit" value="Change Type User" name="commit">
+                                        </dd>
+                                    }
+                                }
+                                <dt class="col-sm-6"><button type="button" class="btn btn-info" style="margin: 15px;" onclick="location.href='@Url.Action("ViewMessages", "Account", new { userID = Model.user.UserID, page = 1 })'">Show User Messages</button></dt>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

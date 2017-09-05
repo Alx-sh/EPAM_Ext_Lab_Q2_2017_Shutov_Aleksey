@@ -1,0 +1,27 @@
+﻿@model DataAccessLayer.Models.Message
+
+<div class="modal show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close back" data-dismiss="modal" area-hidden="true">X</button>
+                <h4>Edit Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content registerBox">
+                        <div class="form text-center">
+                            @using (Html.BeginForm("EditMessage", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.MessageID)
+                                <div>@Html.TextAreaFor(model => model.TextMessage, 5, 40, new { @class = "textarea", placeholder = "Message" }) @Html.ValidationMessageFor(model => model.TextMessage)</div>
+                                <input class="btn btn-register" type="submit" value="Edit Message" name="commit">
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
